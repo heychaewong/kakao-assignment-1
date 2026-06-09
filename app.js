@@ -263,9 +263,9 @@ function createTodoElement(todo) {
   );
   editBtn.disabled = todo.completed;
 
-  const deleteBtn = createButton('삭제', 'btn btn-delete', () =>
-    deleteTodo(todo.id)
-  );
+  const deleteBtn = createButton('삭제', 'btn btn-delete', () => {
+    if (confirm('정말로 삭제하시겠습니까?')) deleteTodo(todo.id);
+  });
 
   actions.append(completeBtn, editBtn, deleteBtn);
   li.append(span, actions);
